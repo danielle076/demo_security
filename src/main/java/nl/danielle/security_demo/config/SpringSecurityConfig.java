@@ -23,9 +23,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
-        auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("SELECT username, password, enabled FROM my_users WHERE username=?")
-                .authoritiesByUsernameQuery("SELECT username, authority FROM my_authorities AS a WHERE username=?");
+        auth.jdbcAuthentication().dataSource(dataSource);
     }
 
     @Bean
@@ -33,7 +31,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    // Secure the endpoins with HTTP Basic authentication
+    // Secure the endpoints with HTTP Basic authentication
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
