@@ -25,13 +25,12 @@ public class User {
     private String email;
 
     @OneToMany(
-            targetEntity = Authority.class,
+            targetEntity = nl.danielle.security_demo.model.Authority.class,
             mappedBy = "username",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.EAGER)
-    private Set<Authority> authorities = new HashSet<>();
-
+    private Set<nl.danielle.security_demo.model.Authority> authorities = new HashSet<>();
 
     public String getUsername() {
         return username;

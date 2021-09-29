@@ -1,8 +1,7 @@
-package nl.danielle.security_demo.config;
+package nl.danielle.security_demo.service;
 
 import nl.danielle.security_demo.model.Authority;
 import nl.danielle.security_demo.model.User;
-import nl.danielle.security_demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -32,7 +31,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         String password = user.get().getPassword();
 
         Set<Authority> authorities = user.get().getAuthorities();
-
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         for (Authority authority : authorities) {
             grantedAuthorities.add(new SimpleGrantedAuthority(authority.getAuthority()));

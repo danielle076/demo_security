@@ -14,7 +14,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements nl.danielle.security_demo.service.UserService {
 
     @Autowired
     private UserRepository userRepository;
@@ -52,8 +52,6 @@ public class UserServiceImpl implements UserService {
         if (!userRepository.existsById(username)) throw new RecordNotFoundException();
         User user = userRepository.findById(username).get();
         user.setPassword(newUser.getPassword());
-        user.setEmail(newUser.getEmail());
-        user.setApikey(newUser.getApikey());
         userRepository.save(user);
     }
 
